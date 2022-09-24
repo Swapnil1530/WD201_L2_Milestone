@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const args = require("minimist")(process.argv.slice(2));
+var Port = args.port;
 
 let homeContent = "";
 let projectContent = "";
@@ -46,4 +47,9 @@ http
         break;
     }
   })
-  .listen(args.port);
+  .listen(
+    (Port,
+    () => {
+      console.log(`Srever running At port : ${Port}`);
+    })
+  );
